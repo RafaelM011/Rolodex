@@ -1,25 +1,26 @@
 import { Component } from 'react'
+import { type monster } from './type.d'
 
 interface Props {
   name: string
 }
 
 interface State {
-  name: string
+  monsters: monster[]
 }
 
 class App extends Component<Props, State> {
   constructor (props: Props) {
     super(props)
     this.state = {
-      name: this.props.name
+      monsters: []
     }
   }
 
   render (): JSX.Element {
     return (
-      <h1 className='text-red-400 font-medium'> Hello { this.state.name } </h1>
-    )
+      
+      )
   }
 }
 
