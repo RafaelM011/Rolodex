@@ -1,8 +1,8 @@
-import { Component } from "react";
+import { ChangeEvent, Component } from "react";
 
 interface Props {
     value: string
-    onChange: ( event: any) => void
+    onChange: ( event: ChangeEvent<HTMLInputElement>) => void
 }
 
 class SearchField extends Component<Props> {
