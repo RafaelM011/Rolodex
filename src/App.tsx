@@ -1,6 +1,7 @@
 import { type ChangeEvent, Component } from 'react'
 import { type monster } from './type.d'
 import CardList from './components/CardLIst/card_list.component'
+import SearchField from './components/SearchField/search_field.component'
 
 interface Props {
   name: string
@@ -45,13 +46,7 @@ class App extends Component<Props, State> {
 
     return (
       <div>
-        <input
-          className='ml-4 px-4'
-          value={searchField}
-          type='search'
-          placeholder='search monsters'
-          onChange={ (event) => this.handleSearchChange(event) }
-        />
+        <SearchField value={searchField} onChange={(event) =>  this.handleSearchChange(event)}/>
         <CardList monsters={filteredMonsters}/>
       </div>
     )
