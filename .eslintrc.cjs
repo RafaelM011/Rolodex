@@ -30,6 +30,8 @@ module.exports = {
   ],
   rules: {
     'import/no-absolute-path': 'off',
-    'react/react-in-jsx-scope': 'off'
+    'react/react-in-jsx-scope': 'off',
+    indent: [2, tab],
+    'no-tabs': 0
   }
 }

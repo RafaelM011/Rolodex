@@ -1,5 +1,6 @@
 import { type ChangeEvent, Component } from 'react'
 import { type monster } from './type.d'
+import CardList from './components/CardLIst/card_list.component'
 
 interface Props {
   name: string
@@ -31,30 +32,27 @@ class App extends Component<Props, State> {
   }
 
   handleSearchChange (event: ChangeEvent<HTMLInputElement>): void {
+    const { monsters } = this.state    
     const value = event.target.value.toLowerCase()
-    const filteredMonsters = this.state.monsters.filter(monster => {
+    const filteredMonsters = monsters.filter(monster => {
       return monster.name.toLowerCase().includes(value)
     })
     this.setState(() => ({ searchField: value, filteredMonsters }))
   }
 
   render (): JSX.Element {
+    const { filteredMonsters, searchField } = this.state
+
     return (
       <div>
         <input
           className='ml-4 px-4'
-          value={this.state.searchField}
+          value={searchField}
           type='search'
           placeholder='search monsters'
-          onChange={(event) => { this.handleSearchChange(event) }}
+          onChange={ (event) => this.handleSearchChange(event) }
         />
-        {
-          this.state.filteredMonsters.map(monster => {
-            return (
-              <h1 key={monster.id}> {monster.name} </h1>
-            )
-          })
-        }
+        <CardList monsters={filteredMonsters}/>
       </div>
     )
   }
