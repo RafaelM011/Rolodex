@@ -31,9 +31,9 @@ class App extends Component<Props, State> {
   }
 
   handleSearchChange (event: ChangeEvent<HTMLInputElement>): void {
-    const value = event.target.value
+    const value = event.target.value.toLowerCase()
     const filteredMonsters = this.state.monsters.filter(monster => {
-      return monster.name.includes(value)
+      return monster.name.toLowerCase().includes(value)
     })
     this.setState(() => ({ searchField: value, filteredMonsters }))
   }
@@ -41,7 +41,13 @@ class App extends Component<Props, State> {
   render (): JSX.Element {
     return (
       <div>
-        <input className='ml-4 px-4' value={this.state.searchField} type='search' placeholder='search monsters' onChange={(event) => { this.handleSearchChange(event) }}/>
+        <input
+          className='ml-4 px-4'
+          value={this.state.searchField}
+          type='search'
+          placeholder='search monsters'
+          onChange={(event) => { this.handleSearchChange(event) }}
+        />
         {
           this.state.filteredMonsters.map(monster => {
             return (
