@@ -43,10 +43,11 @@ class App extends Component<Props, State> {
 
   render (): JSX.Element {
     const { filteredMonsters, searchField } = this.state
+    const handleSearchChange = this.handleSearchChange.bind(this)
 
     return (
       <div>
-        <SearchField value={searchField} onChange={(event) =>  this.handleSearchChange(event)}/>
+        <SearchField value={searchField} onChange={handleSearchChange}/>
         <CardList monsters={filteredMonsters}/>
       </div>
     )
